@@ -3,42 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LifeSpike</title>
+    <title>LifeSpike — Offline Workouts, No Account Needed</title>
+    <meta name="description" content="Build strength with kettlebell, dumbbell & bodyweight programs — all offline. Track progress, follow structured plans, or create your own.">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: #000;
             color: #e0e0e0;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .hero {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
             text-align: center;
-            padding: 24px;
+            padding: 80px 24px 48px;
         }
-        .container { max-width: 400px; }
-        h1 {
+        .hero h1 {
             color: #CCFF00;
-            font-size: 2rem;
-            margin-bottom: 8px;
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
         }
-        p {
+        .hero .tagline {
+            color: #fff;
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+        .hero .description {
             color: #888;
             font-size: 1rem;
-            margin-bottom: 24px;
+            max-width: 480px;
+            margin-bottom: 36px;
         }
-        a {
+
+        .store-links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .store-link {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+        .store-link:hover { opacity: 0.85; }
+        .store-link-ios {
+            background: #fff;
+            color: #000;
+        }
+        .store-link-android {
+            background: #1a1a1a;
             color: #CCFF00;
-            font-size: 0.9rem;
+            border: 1px solid #333;
         }
+        .store-icon {
+            font-size: 1.1rem;
+            margin-right: 6px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 48px 24px;
+        }
+        .feature {
+            background: #111;
+            border-radius: 14px;
+            padding: 28px 24px;
+            border: 1px solid #1a1a1a;
+        }
+        .feature-icon {
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+        }
+        .feature h3 {
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .feature p {
+            color: #888;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 24px;
+            border-top: 1px solid #1a1a1a;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        footer a {
+            color: #888;
+            text-decoration: none;
+            font-size: 0.85rem;
+            margin: 0 12px;
+        }
+        footer a:hover { color: #CCFF00; }
+        footer .sep { color: #333; margin: 0 4px; }
     </style>
 </head>
 <body>
-    <div class="container">
+    <section class="hero">
         <h1>LifeSpike</h1>
-        <p>Your AI-powered fitness companion</p>
+        <p class="tagline">Offline-first workouts. No account needed.</p>
+        <p class="description">Build strength with kettlebell, dumbbell & bodyweight programs — all offline. Track progress, follow structured plans, or create your own.</p>
+        <div class="store-links">
+            <a href="https://apps.apple.com/app/lifespike/id0000000000" class="store-link store-link-ios">
+                <span class="store-icon">&#63743;</span> App Store
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.lifespike.app" class="store-link store-link-android">
+                <span class="store-icon">&#9654;</span> Google Play
+            </a>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="feature">
+            <div class="feature-icon">&#128170;</div>
+            <h3>Structured Plans</h3>
+            <p>4-12 week kettlebell, dumbbell & bodyweight programs with progressive overload built in.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">&#9881;</div>
+            <h3>Custom Builder</h3>
+            <p>Build your own workouts from 200+ exercises. Set your own sets, reps, and rest periods.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">&#128200;</div>
+            <h3>Progress Tracking</h3>
+            <p>Track sets, reps, and calories locally on your device. See your workout history at a glance.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">&#128274;</div>
+            <h3>Privacy First</h3>
+            <p>No account, no cloud, no tracking. Your data stays on your device — always.</p>
+        </div>
+    </section>
+
+    <footer>
+        <a href="mailto:contact@lifespike.app">Contact</a>
+        <span class="sep">&middot;</span>
         <a href="privacy/">Privacy Policy</a>
-    </div>
+    </footer>
 </body>
 </html>
