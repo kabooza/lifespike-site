@@ -3,20 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LifeSpike — Offline Workouts, No Account Needed</title>
-    <meta name="description" content="Build strength with kettlebell, dumbbell & bodyweight programs — all offline. Track progress, follow structured plans, or create your own.">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+    <title>LifeSpike — Offline Strength Workouts, No Account Needed</title>
+    <meta name="description" content="LifeSpike is an offline-first strength training app. Follow structured kettlebell, dumbbell & bodyweight programs, generate instant workouts, and track every gain — no account, no ads, no cloud.">
+    <meta name="theme-color" content="#000000">
+    <link rel="canonical" href="https://lifespike.app/">
 
-        ::selection {
-            background: rgba(204, 255, 0, 0.3);
-            color: #fff;
+    <!-- Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+    <link rel="apple-touch-icon" href="assets/icon-180.png">
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="LifeSpike">
+    <meta property="og:title" content="LifeSpike — Offline Strength Workouts, No Account Needed">
+    <meta property="og:description" content="Structured kettlebell, dumbbell & bodyweight programs, instant workouts, and progress tracking — all offline. No account, no ads, no cloud.">
+    <meta property="og:url" content="https://lifespike.app/">
+    <meta property="og:image" content="https://lifespike.app/assets/og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LifeSpike — Offline Strength Workouts">
+    <meta name="twitter:description" content="Structured programs, instant workouts & progress tracking — all offline. No account, no ads.">
+    <meta name="twitter:image" content="https://lifespike.app/assets/og.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MobileApplication",
+      "name": "LifeSpike",
+      "operatingSystem": "iOS, Android",
+      "applicationCategory": "HealthApplication",
+      "description": "Offline-first strength training app with structured kettlebell, dumbbell and bodyweight programs, an instant workout generator, and on-device progress tracking. No account required.",
+      "url": "https://lifespike.app/",
+      "installUrl": [
+        "https://play.google.com/store/apps/details?id=com.lifespike.app",
+        "https://apps.apple.com/us/app/lifespike/id6759341537"
+      ],
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <style>
+        :root {
+            --lime: #CCFF00;
+            --lime-dim: #aedc00;
+            --bg: #000;
+            --surface: rgba(255, 255, 255, 0.03);
+            --surface-2: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.08);
+            --text: #f2f2f2;
+            --muted: #8a8a8a;
+            --muted-2: #6a6a6a;
+            --max: 1120px;
         }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        ::selection { background: rgba(204, 255, 0, 0.3); color: #fff; }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #000;
-            color: #e0e0e0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
             min-height: 100vh;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
@@ -25,316 +78,560 @@
             overflow-x: hidden;
         }
 
-        /* Subtle background gradient */
         body::before {
             content: '';
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            inset: 0;
             background:
-                radial-gradient(ellipse 80% 50% at 50% -10%, rgba(204, 255, 0, 0.06) 0%, transparent 60%),
-                radial-gradient(ellipse 60% 40% at 50% 100%, rgba(204, 255, 0, 0.03) 0%, transparent 50%);
+                radial-gradient(ellipse 70% 45% at 50% -8%, rgba(204, 255, 0, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 40% at 85% 8%, rgba(123, 97, 255, 0.06) 0%, transparent 55%);
             pointer-events: none;
             z-index: 0;
         }
 
-        .hero {
-            position: relative;
+        .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+        a { color: inherit; text-decoration: none; }
+
+        /* ---------- Header ---------- */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
+            border-bottom: 1px solid transparent;
+        }
+        header.scrolled {
+            background: rgba(0, 0, 0, 0.72);
+            backdrop-filter: blur(14px) saturate(140%);
+            -webkit-backdrop-filter: blur(14px) saturate(140%);
+            border-bottom-color: var(--border);
+        }
+        .nav-inner {
             display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 100px 24px 56px;
-            z-index: 1;
+            justify-content: space-between;
+            height: 68px;
         }
-
-        /* Hero glow */
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -40px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(204, 255, 0, 0.08) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .hero h1 {
-            color: #CCFF00;
-            font-size: 3.4rem;
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 11px;
             font-weight: 800;
-            letter-spacing: -1.5px;
-            margin-bottom: 14px;
-            animation: fadeUp 0.7s ease-out both;
-        }
-
-        .hero .tagline {
+            font-size: 1.18rem;
+            letter-spacing: -0.4px;
             color: #fff;
-            font-size: 1.3rem;
+        }
+        .brand img { width: 32px; height: 32px; border-radius: 9px; }
+        .brand span { color: var(--lime); }
+        .nav-links { display: flex; align-items: center; gap: 30px; }
+        .nav-links a.link {
+            color: var(--muted);
+            font-size: 0.92rem;
             font-weight: 500;
-            margin-bottom: 14px;
-            animation: fadeUp 0.7s ease-out 0.1s both;
+            transition: color 0.2s ease;
         }
+        .nav-links a.link:hover { color: #fff; }
+        .btn-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: var(--lime);
+            color: #000;
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 10px 20px;
+            border-radius: 100px;
+            transition: transform 0.15s ease, box-shadow 0.2s ease;
+        }
+        .btn-pill:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(204, 255, 0, 0.22); }
+        @media (max-width: 720px) { .nav-links .link { display: none; } }
 
-        .hero .description {
-            color: #888;
-            font-size: 1.05rem;
+        /* ---------- Hero ---------- */
+        .hero {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            align-items: center;
+            gap: 40px;
+            padding: 70px 0 60px;
+        }
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
+            color: var(--lime);
+            background: rgba(204, 255, 0, 0.08);
+            border: 1px solid rgba(204, 255, 0, 0.18);
+            padding: 7px 14px;
+            border-radius: 100px;
+            margin-bottom: 24px;
+        }
+        .eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 8px var(--lime); }
+        .hero h1 {
+            font-size: clamp(2.6rem, 5.4vw, 4rem);
+            font-weight: 900;
+            line-height: 1.02;
+            letter-spacing: -2px;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        .hero h1 .hl { color: var(--lime); }
+        .hero .lead {
+            font-size: 1.12rem;
+            color: var(--muted);
             max-width: 480px;
-            margin-bottom: 40px;
-            animation: fadeUp 0.7s ease-out 0.2s both;
+            margin-bottom: 30px;
         }
-
-        .store-links {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-            justify-content: center;
-            animation: fadeUp 0.7s ease-out 0.3s both;
-        }
-
+        .store-links { display: flex; gap: 14px; flex-wrap: wrap; }
         .store-link {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            padding: 15px 30px;
+            gap: 11px;
+            padding: 14px 24px;
             border-radius: 14px;
-            text-decoration: none;
             font-size: 0.95rem;
             font-weight: 600;
-            transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+            transition: transform 0.18s ease, box-shadow 0.2s ease, border-color 0.2s ease;
         }
+        .store-link:hover { transform: translateY(-2px); }
+        .store-link:active { transform: translateY(0); }
+        .store-link .label { display: flex; flex-direction: column; line-height: 1.1; text-align: left; }
+        .store-link .label small { font-size: 0.68rem; font-weight: 500; opacity: 0.7; }
+        .store-link-ios { background: #fff; color: #000; }
+        .store-link-ios:hover { box-shadow: 0 10px 32px rgba(255, 255, 255, 0.14); }
+        .store-link-android { background: #0e0e0e; color: #fff; border: 1px solid #262626; }
+        .store-link-android:hover { box-shadow: 0 10px 32px rgba(204, 255, 0, 0.08); border-color: #383838; }
+        .store-link svg { width: 22px; height: 22px; flex-shrink: 0; }
 
-        .store-link:hover {
-            transform: translateY(-2px);
+        .trust { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 26px; }
+        .trust span {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 0.82rem;
+            color: var(--muted-2);
+            font-weight: 500;
         }
+        .trust svg { width: 15px; height: 15px; stroke: var(--lime); stroke-width: 2.4; fill: none; stroke-linecap: round; stroke-linejoin: round; }
 
-        .store-link:active {
-            transform: translateY(0);
+        /* ---------- Device frame ---------- */
+        .device-stage { display: flex; justify-content: center; position: relative; }
+        .device-stage::before {
+            content: '';
+            position: absolute;
+            width: 340px; height: 340px;
+            background: radial-gradient(circle, rgba(204, 255, 0, 0.13) 0%, transparent 68%);
+            top: 50%; left: 50%; transform: translate(-50%, -50%);
+            pointer-events: none;
         }
-
-        .store-link-ios {
-            background: #fff;
-            color: #000;
-        }
-
-        .store-link-ios:hover {
-            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.15);
-        }
-
-        .store-link-android {
-            background: #111;
-            color: #CCFF00;
-            border: 1px solid #2a2a2a;
-        }
-
-        .store-link-android:hover {
-            box-shadow: 0 8px 30px rgba(204, 255, 0, 0.1);
-            border-color: #3a3a3a;
-        }
-
-        .store-link svg {
-            width: 20px;
-            height: 20px;
-            flex-shrink: 0;
-        }
-
-        .features {
+        .device {
             position: relative;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px;
-            max-width: 740px;
-            margin: 0 auto;
-            padding: 56px 24px;
+            width: min(300px, 76vw);
+            aspect-ratio: 1290 / 2796;
+            border-radius: 46px;
+            background: #060606;
+            padding: 9px;
+            box-shadow:
+                0 0 0 1.5px #232323,
+                0 0 0 3px #0a0a0a,
+                0 40px 90px rgba(0, 0, 0, 0.65),
+                0 0 70px rgba(204, 255, 0, 0.06);
             z-index: 1;
         }
-
-        .feature {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 16px;
-            padding: 32px 28px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-            animation: fadeUp 0.6s ease-out both;
+        .device .screen {
+            width: 100%; height: 100%;
+            border-radius: 38px;
+            overflow: hidden;
+            position: relative;
+            background: #000;
+        }
+        .device .screen img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            transform: scale(1.045);
+            display: block;
         }
 
-        .feature:nth-child(1) { animation-delay: 0.4s; }
-        .feature:nth-child(2) { animation-delay: 0.5s; }
-        .feature:nth-child(3) { animation-delay: 0.6s; }
-        .feature:nth-child(4) { animation-delay: 0.7s; }
-
-        .feature:hover {
-            border-color: rgba(204, 255, 0, 0.15);
-            box-shadow: 0 0 30px rgba(204, 255, 0, 0.05);
-            transform: translateY(-2px);
-        }
-
-        .feature-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: rgba(204, 255, 0, 0.08);
+        /* ---------- Equipment strip ---------- */
+        .strip { padding: 14px 0 8px; }
+        .strip-inner {
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 16px;
+            gap: 14px 34px;
+            flex-wrap: wrap;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 22px 0;
         }
+        .strip-inner .cap { font-size: 0.78rem; letter-spacing: 0.5px; text-transform: uppercase; color: var(--muted-2); font-weight: 600; }
+        .strip-inner .item { display: inline-flex; align-items: center; gap: 9px; font-weight: 600; color: #ccc; font-size: 0.98rem; }
+        .strip-inner .item b { color: var(--lime); }
 
-        .feature-icon svg {
-            width: 22px;
-            height: 22px;
-            stroke: #CCFF00;
-            stroke-width: 2;
-            fill: none;
-            stroke-linecap: round;
-            stroke-linejoin: round;
+        /* ---------- Sections ---------- */
+        section.block { padding: 88px 0; }
+        .section-head { text-align: center; max-width: 640px; margin: 0 auto 56px; }
+        .section-head .kicker {
+            font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+            color: var(--lime); margin-bottom: 14px;
         }
-
-        .feature h3 {
-            color: #fff;
-            font-size: 1.05rem;
-            font-weight: 600;
-            margin-bottom: 8px;
+        .section-head h2 {
+            font-size: clamp(1.9rem, 3.6vw, 2.6rem);
+            font-weight: 800; letter-spacing: -1px; color: #fff; line-height: 1.1; margin-bottom: 14px;
         }
+        .section-head p { color: var(--muted); font-size: 1.05rem; }
 
-        .feature p {
-            color: #888;
-            font-size: 0.9rem;
-            line-height: 1.55;
+        /* Showcase alternating rows */
+        .showcase { display: flex; flex-direction: column; gap: 96px; }
+        .show-row { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 56px; }
+        .show-row.reverse .show-text { order: 2; }
+        .show-row.reverse .show-media { order: 1; }
+        .show-text .tag {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 0.78rem; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
+            color: var(--lime); margin-bottom: 16px;
         }
+        .show-text h3 { font-size: clamp(1.4rem, 5vw, 1.7rem); font-weight: 800; letter-spacing: -0.6px; color: #fff; margin-bottom: 14px; line-height: 1.15; }
+        .show-text p { color: var(--muted); font-size: 1.02rem; margin-bottom: 20px; max-width: 440px; }
+        .show-list { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+        .show-list li { display: flex; align-items: flex-start; gap: 11px; color: #cfcfcf; font-size: 0.96rem; }
+        .show-list svg { width: 19px; height: 19px; flex-shrink: 0; margin-top: 2px; stroke: var(--lime); stroke-width: 2.4; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+        .show-media { display: flex; justify-content: center; }
+        .show-media .device { width: min(280px, 70vw); }
 
-        footer {
+        /* ---------- Feature grid ---------- */
+        .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+        .feature {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 30px 26px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease, background 0.3s ease;
+        }
+        .feature:hover {
+            border-color: rgba(204, 255, 0, 0.22);
+            background: var(--surface-2);
+            box-shadow: 0 0 36px rgba(204, 255, 0, 0.05);
+            transform: translateY(-3px);
+        }
+        .feature-icon {
+            width: 46px; height: 46px; border-radius: 13px;
+            background: rgba(204, 255, 0, 0.09);
+            display: flex; align-items: center; justify-content: center; margin-bottom: 18px;
+        }
+        .feature-icon svg { width: 23px; height: 23px; stroke: var(--lime); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+        .feature h3 { color: #fff; font-size: 1.08rem; font-weight: 700; margin-bottom: 9px; }
+        .feature p { color: var(--muted); font-size: 0.92rem; line-height: 1.55; }
+
+        /* ---------- Stats band ---------- */
+        .band { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+        .stats { display: grid; grid-template-columns: repeat(3, 1fr); }
+        .stat { text-align: center; padding: 54px 20px; position: relative; }
+        .stat + .stat::before { content: ''; position: absolute; left: 0; top: 28%; height: 44%; width: 1px; background: var(--border); }
+        .stat .num { font-size: clamp(2.2rem, 4vw, 3rem); font-weight: 900; color: var(--lime); letter-spacing: -1.5px; line-height: 1; }
+        .stat .lbl { color: var(--muted); font-size: 0.92rem; margin-top: 10px; font-weight: 500; }
+
+        /* ---------- Final CTA ---------- */
+        .cta { text-align: center; padding: 100px 0 90px; }
+        .cta-card {
             position: relative;
-            text-align: center;
-            padding: 44px 24px;
-            max-width: 740px;
-            margin: 0 auto;
-            z-index: 1;
+            border-radius: 28px;
+            border: 1px solid rgba(204, 255, 0, 0.18);
+            background:
+                radial-gradient(ellipse 60% 80% at 50% 0%, rgba(204, 255, 0, 0.1) 0%, transparent 70%),
+                rgba(255, 255, 255, 0.02);
+            padding: 64px 32px;
+            overflow: hidden;
         }
+        .cta-card h2 { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 900; letter-spacing: -1.2px; color: #fff; margin-bottom: 14px; line-height: 1.08; }
+        .cta-card p { color: var(--muted); font-size: 1.08rem; max-width: 480px; margin: 0 auto 32px; }
+        .cta-card .store-links { justify-content: center; }
 
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 24px;
-            right: 24px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(204, 255, 0, 0.15), transparent);
+        /* ---------- Footer ---------- */
+        footer { border-top: 1px solid var(--border); padding: 48px 0; }
+        .foot-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+        .foot-brand { display: inline-flex; align-items: center; gap: 11px; }
+        .foot-brand img { width: 30px; height: 30px; border-radius: 8px; }
+        .foot-brand .t { font-weight: 800; color: #fff; letter-spacing: -0.3px; }
+        .foot-brand .s { display: block; font-size: 0.8rem; color: var(--muted-2); font-weight: 400; }
+        .foot-links { display: flex; gap: 26px; flex-wrap: wrap; }
+        .foot-links a { color: var(--muted); font-size: 0.9rem; font-weight: 500; transition: color 0.2s ease; }
+        .foot-links a:hover { color: var(--lime); }
+        .copy { margin-top: 30px; color: var(--muted-2); font-size: 0.82rem; }
+
+        /* ---------- Reveal animation ---------- */
+        .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal.in { opacity: 1; transform: none; }
+
+        /* ---------- Responsive ---------- */
+        @media (max-width: 900px) {
+            .hero { grid-template-columns: 1fr; text-align: center; gap: 48px; padding: 48px 0 50px; }
+            .hero .lead { margin-left: auto; margin-right: auto; }
+            .store-links, .trust { justify-content: center; }
+            .device-stage { order: -1; }
+            .show-row { grid-template-columns: 1fr; gap: 36px; text-align: center; }
+            .show-row.reverse .show-text, .show-row.reverse .show-media { order: 0; }
+            .show-text p { margin-left: auto; margin-right: auto; }
+            .show-list { display: inline-flex; text-align: left; }
+            .show-text .tag { justify-content: center; }
+            .features { grid-template-columns: repeat(2, 1fr); }
         }
-
-        footer a {
-            color: #666;
-            text-decoration: none;
-            font-size: 0.85rem;
-            margin: 0 14px;
-            transition: color 0.2s ease;
+        @media (max-width: 560px) {
+            section.block { padding: 64px 0; }
+            .showcase { gap: 72px; }
+            .features { grid-template-columns: 1fr; }
+            .stats { grid-template-columns: 1fr; }
+            .stat + .stat::before { display: none; }
+            .stat { padding: 34px 20px; border-top: 1px solid var(--border); }
+            .stats .stat:first-child { border-top: none; }
+            .store-link { flex: 1; justify-content: center; min-width: 200px; }
+            .foot-inner { flex-direction: column; text-align: center; }
         }
-
-        footer a:hover {
-            color: #CCFF00;
-        }
-
-        footer .sep {
-            color: #333;
-            margin: 0 4px;
-        }
-
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(16px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero { padding: 72px 20px 40px; }
-            .hero h1 { font-size: 2.6rem; }
-            .hero .tagline { font-size: 1.15rem; }
-            .store-links { flex-direction: column; align-items: center; }
-            .store-link { width: 100%; max-width: 260px; justify-content: center; }
-            .features { padding: 40px 20px; gap: 16px; }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .reveal { opacity: 1; transform: none; transition: none; }
+            * { animation: none !important; }
         }
     </style>
 </head>
 <body>
-    <section class="hero">
-        <h1>LifeSpike</h1>
-        <p class="tagline">Offline-first workouts. No account needed.</p>
-        <p class="description">Build strength with kettlebell, dumbbell & bodyweight programs — all offline. Track progress, follow structured plans, or create your own.</p>
-        <div class="store-links">
-            <a href="https://apps.apple.com/us/app/lifespike/id6759341537" class="store-link store-link-ios">
-                <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
-                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-                </svg>
-                App Store
-            </a>
-            <a href="https://play.google.com/apps/testing/com.lifespike.app" class="store-link store-link-android">
-                <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
-                    <path d="M3.5 20.5V3.5a1 1 0 0 1 1.5-.86l14 8.5a1 1 0 0 1 0 1.72l-14 8.5a1 1 0 0 1-1.5-.86z"/>
-                </svg>
-                Google Play
-            </a>
+    <!-- ===== Header ===== -->
+    <header id="hdr">
+        <div class="wrap nav-inner">
+            <a href="/" class="brand"><img src="assets/logo.webp" alt="LifeSpike logo" width="32" height="32">Life<span>Spike</span></a>
+            <nav class="nav-links">
+                <a class="link" href="#features">Features</a>
+                <a class="link" href="#showcase">How it works</a>
+                <a class="link" href="privacy/">Privacy</a>
+                <a class="btn-pill" href="#get">Get the app</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== Hero ===== -->
+    <div class="wrap">
+        <section class="hero">
+            <div class="hero-copy reveal">
+                <span class="eyebrow"><span class="dot"></span> Offline-first · No account</span>
+                <h1>Build real strength,<br><span class="hl">anywhere.</span></h1>
+                <p class="lead">Structured kettlebell, dumbbell &amp; bodyweight programs with guided, timed workouts and progress tracking — all running entirely on your device.</p>
+                <div class="store-links" id="get">
+                    <a href="https://apps.apple.com/us/app/lifespike/id6759341537" class="store-link store-link-ios">
+                        <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                        <span class="label"><small>Download on the</small>App Store</span>
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.lifespike.app" class="store-link store-link-android">
+                        <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M3.5 20.5V3.5a1 1 0 0 1 1.5-.86l14 8.5a1 1 0 0 1 0 1.72l-14 8.5a1 1 0 0 1-1.5-.86z"/></svg>
+                        <span class="label"><small>Get it on</small>Google Play</span>
+                    </a>
+                </div>
+                <div class="trust">
+                    <span><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> No ads, ever</span>
+                    <span><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Works fully offline</span>
+                    <span><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Nothing to sign up for</span>
+                </div>
+            </div>
+            <div class="device-stage reveal">
+                <div class="device">
+                    <div class="screen"><img src="assets/shot-home.webp" alt="LifeSpike home screen with AI coach suggesting the next workout" width="280" height="607" loading="eager"></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ===== Equipment strip ===== -->
+    <div class="wrap strip">
+        <div class="strip-inner reveal">
+            <span class="cap">Train with what you have</span>
+            <span class="item"><b>Kettlebell</b></span>
+            <span class="item"><b>Dumbbell</b></span>
+            <span class="item"><b>Bodyweight</b></span>
+            <span class="item"><b>200+</b>&nbsp;exercises</span>
+        </div>
+    </div>
+
+    <!-- ===== Showcase ===== -->
+    <section class="block" id="showcase">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <div class="kicker">How it works</div>
+                <h2>A complete training system in your pocket</h2>
+                <p>From a structured multi-week plan to a workout you generate in seconds — LifeSpike guides every rep and remembers every session.</p>
+            </div>
+
+            <div class="showcase">
+                <!-- Row 1: Plans -->
+                <div class="show-row reveal">
+                    <div class="show-text">
+                        <div class="tag">Structured Programs</div>
+                        <h3>Follow a plan that progresses with you</h3>
+                        <p>Pick a goal and follow a 4-to-12-week program built around progressive overload. Every week and day is laid out — just press play.</p>
+                        <ul class="show-list">
+                            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Kettlebell, dumbbell &amp; bodyweight tracks</li>
+                            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Clear week-by-week progression</li>
+                            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Your completion is saved automatically</li>
+                        </ul>
+                    </div>
+                    <div class="show-media">
+                        <div class="device"><div class="screen"><img src="assets/shot-plan.webp" alt="A multi-week LifeSpike program laid out as a grid of workouts" width="260" height="563" loading="lazy"></div></div>
+                    </div>
+                </div>
+
+                <!-- Row 2: Player -->
+                <div class="show-row reverse reveal">
+                    <div class="show-text">
+                        <div class="tag">Guided Workouts</div>
+                        <h3>Step-by-step demos with timed intervals</h3>
+                        <p>Each move comes with a visual demo, work and rest timers, and one-tap pause and skip — so you stay focused on training, not your screen.</p>
+                        <ul class="show-list">
+                            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Animated form demos for every exercise</li>
+                            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Automatic work / rest countdowns</li>
+                            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Voice and sound cues keep you on pace</li>
+                        </ul>
+                    </div>
+                    <div class="show-media">
+                        <div class="device"><div class="screen"><img src="assets/shot-player.webp" alt="LifeSpike guided workout player showing an exercise demo and interval timer" width="260" height="563" loading="lazy"></div></div>
+                    </div>
+                </div>
+
+                <!-- Row 3: Stats -->
+                <div class="show-row reveal">
+                    <div class="show-text">
+                        <div class="tag">Progress Tracking</div>
+                        <h3>See every gain — streaks, minutes &amp; milestones</h3>
+                        <p>Your workouts, training time, and calories are tracked on-device. Build streaks, unlock achievements, and watch your weekly volume climb.</p>
+                        <ul class="show-list">
+                            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Weekly activity &amp; streak insights</li>
+                            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Achievement badges to chase</li>
+                            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Export all your data anytime</li>
+                        </ul>
+                    </div>
+                    <div class="show-media">
+                        <div class="device"><div class="screen"><img src="assets/shot-stats.webp" alt="LifeSpike progress screen with workout stats, streaks and achievement badges" width="260" height="563" loading="lazy"></div></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section class="features">
-        <div class="feature">
-            <div class="feature-icon">
-                <svg viewBox="0 0 24 24">
-                    <path d="M9 4h6v16H9z"/>
-                    <path d="M4 9h16v6H4z"/>
-                </svg>
+    <!-- ===== Features grid ===== -->
+    <section class="block" id="features">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <div class="kicker">Everything included</div>
+                <h2>Built for people who just want to train</h2>
+                <p>No subscriptions to start, no clutter, no distractions — only the tools you need to show up and get stronger.</p>
             </div>
-            <h3>Structured Plans</h3>
-            <p>4-12 week kettlebell, dumbbell & bodyweight programs with progressive overload built in.</p>
-        </div>
-        <div class="feature">
-            <div class="feature-icon">
-                <svg viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="3"/>
-                    <path d="M12 1v4m0 14v4m-9.5-9.5h4m14 0h4M4.22 4.22l2.83 2.83m9.9 9.9l2.83 2.83M4.22 19.78l2.83-2.83m9.9-9.9l2.83-2.83"/>
-                </svg>
+            <div class="features">
+                <div class="feature reveal">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M9 4h6v16H9z"/><path d="M4 9h16v6H4z"/></svg></div>
+                    <h3>Structured Plans</h3>
+                    <p>4-12 week kettlebell, dumbbell &amp; bodyweight programs with progressive overload built in.</p>
+                </div>
+                <div class="feature reveal">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
+                    <h3>Instant Workouts</h3>
+                    <p>Pick a focus, duration and equipment, then generate a ready-to-go workout in seconds — no plan needed.</p>
+                </div>
+                <div class="feature reveal">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="13" rx="2.5"/><path d="M9 3v3m6-3v3M9.5 12.5h.01M14.5 12.5h.01M9 16h6"/></svg></div>
+                    <h3>AI Coach</h3>
+                    <p>Smart nudges and next-up suggestions help you recover, stay consistent, and keep your momentum going.</p>
+                </div>
+                <div class="feature reveal">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4m0 14v4m-9.5-9.5h4m14 0h4M4.22 4.22l2.83 2.83m9.9 9.9l2.83 2.83M4.22 19.78l2.83-2.83m9.9-9.9l2.83-2.83"/></svg></div>
+                    <h3>Custom Builder</h3>
+                    <p>Design your own routines from 200+ exercises. Set your sets, reps and rest, then save it as a program.</p>
+                </div>
+                <div class="feature reveal">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+                    <h3>Progress Tracking</h3>
+                    <p>Sets, reps, minutes and calories tracked locally, with streaks, achievements and weekly insights.</p>
+                </div>
+                <div class="feature reveal">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+                    <h3>Privacy First</h3>
+                    <p>No account, no cloud sync, no ad tracking. Your training data stays on your device — always.</p>
+                </div>
             </div>
-            <h3>Custom Builder</h3>
-            <p>Build your own workouts from 200+ exercises. Set your own sets, reps, and rest periods.</p>
-        </div>
-        <div class="feature">
-            <div class="feature-icon">
-                <svg viewBox="0 0 24 24">
-                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-                </svg>
-            </div>
-            <h3>Progress Tracking</h3>
-            <p>Track sets, reps, and calories locally on your device. See your workout history at a glance.</p>
-        </div>
-        <div class="feature">
-            <div class="feature-icon">
-                <svg viewBox="0 0 24 24">
-                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-                </svg>
-            </div>
-            <h3>Privacy First</h3>
-            <p>No account, no cloud, no tracking. Your data stays on your device — always.</p>
         </div>
     </section>
 
+    <!-- ===== Stats band ===== -->
+    <div class="band">
+        <div class="wrap">
+            <div class="stats">
+                <div class="stat reveal"><div class="num">200+</div><div class="lbl">Exercises with demos</div></div>
+                <div class="stat reveal"><div class="num">4–12<span style="font-size:1.4rem"> wk</span></div><div class="lbl">Structured programs</div></div>
+                <div class="stat reveal"><div class="num">100%</div><div class="lbl">Offline &amp; on-device</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Final CTA ===== -->
+    <section class="cta">
+        <div class="wrap">
+            <div class="cta-card reveal">
+                <h2>Start training today.</h2>
+                <p>Download LifeSpike, pick your equipment, and do your first workout in minutes. No account, no setup, no excuses.</p>
+                <div class="store-links">
+                    <a href="https://apps.apple.com/us/app/lifespike/id6759341537" class="store-link store-link-ios">
+                        <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                        <span class="label"><small>Download on the</small>App Store</span>
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.lifespike.app" class="store-link store-link-android">
+                        <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M3.5 20.5V3.5a1 1 0 0 1 1.5-.86l14 8.5a1 1 0 0 1 0 1.72l-14 8.5a1 1 0 0 1-1.5-.86z"/></svg>
+                        <span class="label"><small>Get it on</small>Google Play</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Footer ===== -->
     <footer>
-        <a href="mailto:contact@lifespike.app">Contact</a>
-        <span class="sep">&middot;</span>
-        <a href="terms/">Terms of Use</a>
-        <span class="sep">&middot;</span>
-        <a href="privacy/">Privacy Policy</a>
+        <div class="wrap">
+            <div class="foot-inner">
+                <a href="/" class="foot-brand">
+                    <img src="assets/logo.webp" alt="LifeSpike logo" width="30" height="30">
+                    <span class="t">LifeSpike<span class="s">Offline strength training</span></span>
+                </a>
+                <nav class="foot-links">
+                    <a href="mailto:contact@lifespike.app">Contact</a>
+                    <a href="terms/">Terms of Use</a>
+                    <a href="privacy/">Privacy Policy</a>
+                </nav>
+            </div>
+            <div class="copy">© 2026 LifeSpike. All rights reserved.</div>
+        </div>
     </footer>
+
+    <script>
+        // Header background on scroll
+        var hdr = document.getElementById('hdr');
+        var onScroll = function () {
+            if (window.scrollY > 12) hdr.classList.add('scrolled');
+            else hdr.classList.remove('scrolled');
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+
+        // Reveal on scroll
+        if ('IntersectionObserver' in window) {
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+            document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+        } else {
+            document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+        }
+    </script>
 </body>
 </html>
