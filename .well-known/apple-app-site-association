@@ -1,0 +1,17 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": ["REPLACE_WITH_APPLE_TEAM_ID.com.lifespike.app"],
+        "components": [
+          { "/": "/plan/*" },
+          { "/": "/workout/*" },
+          { "/": "/quick-workout" },
+          { "/": "/stats" },
+          { "/": "/dashboard" }
+        ]
+      }
+    ]
+  }
+}
