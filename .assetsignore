@@ -1,4 +1,5 @@
 wrangler.jsonc
+.wrangler
 .assetsignore
 .git
 UNIVERSAL-LINKS.md
