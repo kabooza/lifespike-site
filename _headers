@@ -12,6 +12,9 @@
   Access-Control-Allow-Origin: *
   Cache-Control: public, max-age=31536000, immutable
 
+# Cloudflare COMBINES headers from every matching rule (so the manifest would get
+# "*, *", which browsers reject). Detach the broad Cache-Control with "!" before
+# setting the short one, and do not repeat the CORS header here.
 /media/*/manifest.json
-  Access-Control-Allow-Origin: *
+  ! Cache-Control
   Cache-Control: public, max-age=300

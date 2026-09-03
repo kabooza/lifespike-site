@@ -1,31 +1,283 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-03T07:59:14.151Z",
+  "generatedAt": "2026-09-03T13:51:50.086Z",
   "clips": {
     "male": {
       "goblet_squat": {
-        "file": "male/goblet_squat.fcc47d11.mp4",
-        "bytes": 104636,
-        "w": 384,
-        "h": 480
+        "file": "male/goblet_squat.6f8b2a92.mp4",
+        "bytes": 260825,
+        "w": 576,
+        "h": 720
       },
       "kettlebell_snatch": {
-        "file": "male/kettlebell_snatch.ee353bd9.mp4",
-        "bytes": 146289,
-        "w": 384,
-        "h": 480
+        "file": "male/kettlebell_snatch.b7c894fb.mp4",
+        "bytes": 333517,
+        "w": 576,
+        "h": 720
       },
       "burpees": {
-        "file": "male/burpees.e7cce2f3.mp4",
-        "bytes": 258798,
-        "w": 854,
-        "h": 480
+        "file": "male/burpees.fb4a6b7d.mp4",
+        "bytes": 571332,
+        "w": 1280,
+        "h": 720
       },
       "turkish_get_up": {
-        "file": "male/turkish_get_up.9a24e16b.mp4",
-        "bytes": 283834,
-        "w": 854,
-        "h": 480
+        "file": "male/turkish_get_up.b6816ef7.mp4",
+        "bytes": 629070,
+        "w": 1280,
+        "h": 720
+      },
+      "cat_cow": {
+        "file": "male/cat_cow.f9cf825c.mp4",
+        "bytes": 487195,
+        "w": 960,
+        "h": 720
+      },
+      "hip_circles": {
+        "file": "male/hip_circles.0940803c.mp4",
+        "bytes": 487528,
+        "w": 720,
+        "h": 960
+      },
+      "arm_circles_hugs": {
+        "file": "male/arm_circles_hugs.ed029c28.mp4",
+        "bytes": 271273,
+        "w": 720,
+        "h": 960
+      },
+      "bodyweight_squats": {
+        "file": "male/bodyweight_squats.07840621.mp4",
+        "bytes": 264238,
+        "w": 720,
+        "h": 960
+      },
+      "glute_bridges": {
+        "file": "male/glute_bridges.8348e340.mp4",
+        "bytes": 143510,
+        "w": 960,
+        "h": 720
+      },
+      "high_plank": {
+        "file": "male/high_plank.0f76b998.mp4",
+        "bytes": 102785,
+        "w": 960,
+        "h": 720
+      },
+      "kettlebell_deadlift": {
+        "file": "male/kettlebell_deadlift.f3ca8b03.mp4",
+        "bytes": 231185,
+        "w": 720,
+        "h": 960
+      },
+      "single_arm_row": {
+        "file": "male/single_arm_row.beb91657.mp4",
+        "bytes": 295747,
+        "w": 720,
+        "h": 960
+      },
+      "kettlebell_upright_row": {
+        "file": "male/kettlebell_upright_row.43f2f83a.mp4",
+        "bytes": 196183,
+        "w": 720,
+        "h": 960
+      },
+      "alternating_suitcase_carry": {
+        "file": "male/alternating_suitcase_carry.4957d3c1.mp4",
+        "bytes": 416210,
+        "w": 720,
+        "h": 960
+      },
+      "child_s_pose": {
+        "file": "male/child_s_pose.dc10ac2f.mp4",
+        "bytes": 291583,
+        "w": 720,
+        "h": 960
+      },
+      "pigeon_stretch": {
+        "file": "male/pigeon_stretch.245efb52.mp4",
+        "bytes": 94508,
+        "w": 960,
+        "h": 720
+      },
+      "forward_fold": {
+        "file": "male/forward_fold.9b9c336d.mp4",
+        "bytes": 245754,
+        "w": 720,
+        "h": 960
+      },
+      "child_stretch": {
+        "file": "male/child_stretch.be21f793.mp4",
+        "bytes": 286862,
+        "w": 720,
+        "h": 960
+      },
+      "kettlebell_floor_press": {
+        "file": "male/kettlebell_floor_press.93da2b05.mp4",
+        "bytes": 139332,
+        "w": 960,
+        "h": 720
+      },
+      "overhead_press": {
+        "file": "male/overhead_press.e2692ce1.mp4",
+        "bytes": 227148,
+        "w": 720,
+        "h": 960
+      },
+      "kettlebell_curl": {
+        "file": "male/kettlebell_curl.12169e79.mp4",
+        "bytes": 327425,
+        "w": 720,
+        "h": 960
+      },
+      "goblet_pulse_squats": {
+        "file": "male/goblet_pulse_squats.9b53aee0.mp4",
+        "bytes": 279178,
+        "w": 720,
+        "h": 960
+      },
+      "alternating_kettlebell_cleans": {
+        "file": "male/alternating_kettlebell_cleans.388c29bb.mp4",
+        "bytes": 332033,
+        "w": 720,
+        "h": 960
+      },
+      "bodyweight_lateral_lunges": {
+        "file": "male/bodyweight_lateral_lunges.93221f18.mp4",
+        "bytes": 332943,
+        "w": 720,
+        "h": 960
+      },
+      "kettlebell_high_pull": {
+        "file": "male/kettlebell_high_pull.2e680d8c.mp4",
+        "bytes": 465531,
+        "w": 720,
+        "h": 960
+      },
+      "plank_kettlebell_taps": {
+        "file": "male/plank_kettlebell_taps.64740893.mp4",
+        "bytes": 367009,
+        "w": 960,
+        "h": 720
+      },
+      "kettlebell_alternating_swings": {
+        "file": "male/kettlebell_alternating_swings.2baa8f13.mp4",
+        "bytes": 482585,
+        "w": 720,
+        "h": 960
+      },
+      "clean_press": {
+        "file": "male/clean_press.e607fbad.mp4",
+        "bytes": 580064,
+        "w": 720,
+        "h": 960
+      },
+      "weighted_lateral_lunges": {
+        "file": "male/weighted_lateral_lunges.16358157.mp4",
+        "bytes": 437988,
+        "w": 720,
+        "h": 960
+      },
+      "plank_kb_drag_throughs": {
+        "file": "male/plank_kb_drag_throughs.512602cc.mp4",
+        "bytes": 303164,
+        "w": 960,
+        "h": 720
+      },
+      "power_swings": {
+        "file": "male/power_swings.5fd480a8.mp4",
+        "bytes": 575036,
+        "w": 720,
+        "h": 960
+      },
+      "single_leg_deadlift": {
+        "file": "male/single_leg_deadlift.d2b83a1b.mp4",
+        "bytes": 272086,
+        "w": 720,
+        "h": 960
+      },
+      "gorilla_row": {
+        "file": "male/gorilla_row.42dca701.mp4",
+        "bytes": 399183,
+        "w": 720,
+        "h": 960
+      },
+      "kettlebell_farmer_s_walk": {
+        "file": "male/kettlebell_farmer_s_walk.25e401ee.mp4",
+        "bytes": 556564,
+        "w": 720,
+        "h": 960
+      },
+      "one_arm_kb_swing": {
+        "file": "male/one_arm_kb_swing.edef6190.mp4",
+        "bytes": 516833,
+        "w": 720,
+        "h": 960
+      },
+      "heavy_goblet_squat": {
+        "file": "male/heavy_goblet_squat.98a72511.mp4",
+        "bytes": 294559,
+        "w": 720,
+        "h": 960
+      },
+      "kettlebell_push_press": {
+        "file": "male/kettlebell_push_press.c612829a.mp4",
+        "bytes": 280793,
+        "w": 720,
+        "h": 960
+      },
+      "kettlebell_thrusters": {
+        "file": "male/kettlebell_thrusters.46db74bf.mp4",
+        "bytes": 529032,
+        "w": 720,
+        "h": 960
+      },
+      "reverse_lunge_and_press": {
+        "file": "male/reverse_lunge_and_press.6220a44c.mp4",
+        "bytes": 338408,
+        "w": 720,
+        "h": 960
+      },
+      "goblet_jump_squats": {
+        "file": "male/goblet_jump_squats.2fdeb521.mp4",
+        "bytes": 431314,
+        "w": 720,
+        "h": 960
+      },
+      "burpee_to_kb_deadlift": {
+        "file": "male/burpee_to_kb_deadlift.184b413a.mp4",
+        "bytes": 283408,
+        "w": 720,
+        "h": 960
+      },
+      "kettlebell_figure_8s": {
+        "file": "male/kettlebell_figure_8s.b1b0ddc6.mp4",
+        "bytes": 427137,
+        "w": 720,
+        "h": 960
+      },
+      "max_effort_american_swings": {
+        "file": "male/max_effort_american_swings.01383f1f.mp4",
+        "bytes": 367553,
+        "w": 720,
+        "h": 960
+      },
+      "double_kb_deadlift": {
+        "file": "male/double_kb_deadlift.56cf0f70.mp4",
+        "bytes": 353928,
+        "w": 720,
+        "h": 960
+      },
+      "renegade_rows": {
+        "file": "male/renegade_rows.8e4b6050.mp4",
+        "bytes": 287166,
+        "w": 960,
+        "h": 720
+      },
+      "kettlebell_dead_stop_swings": {
+        "file": "male/kettlebell_dead_stop_swings.8753c0d4.mp4",
+        "bytes": 428043,
+        "w": 720,
+        "h": 960
       }
     }
   }
