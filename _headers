@@ -3,3 +3,15 @@
 
 /.well-known/assetlinks.json
   Content-Type: application/json
+
+# Exercise clips streamed by the app (built by fitness-app/scripts/build_exercise_media.js).
+# The app fetches them cross-origin (capacitor://localhost, https://localhost) into the
+# Cache API, so CORS is required. Clip names carry a content hash -> cache forever;
+# the manifest is re-fetched, so keep it short-lived.
+/media/*
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=31536000, immutable
+
+/media/*/manifest.json
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=300

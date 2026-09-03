@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "generatedAt": "2026-09-03T07:59:14.151Z",
+  "clips": {
+    "male": {
+      "goblet_squat": {
+        "file": "male/goblet_squat.fcc47d11.mp4",
+        "bytes": 104636,
+        "w": 384,
+        "h": 480
+      },
+      "kettlebell_snatch": {
+        "file": "male/kettlebell_snatch.ee353bd9.mp4",
+        "bytes": 146289,
+        "w": 384,
+        "h": 480
+      },
+      "burpees": {
+        "file": "male/burpees.e7cce2f3.mp4",
+        "bytes": 258798,
+        "w": 854,
+        "h": 480
+      },
+      "turkish_get_up": {
+        "file": "male/turkish_get_up.9a24e16b.mp4",
+        "bytes": 283834,
+        "w": 854,
+        "h": 480
+      }
+    }
+  }
+}
