@@ -5,11 +5,18 @@
       {
         "appIDs": ["8VHYX6JV5W.com.lifespike.app"],
         "components": [
-          { "/": "/plan/*" },
+          { "/": "/plan/*", "comment": "Keep this list in sync with resolveDeepLinkPath() in fitness-app/src/components/DeepLinkInit.tsx and the App Links filter in its AndroidManifest.xml. Only real app routes belong here: a catch-all makes the app swallow its own /privacy and /terms links instead of opening a browser." },
           { "/": "/workout/*" },
           { "/": "/quick-workout" },
+          { "/": "/quick-workout/" },
+          { "/": "/dashboard" },
+          { "/": "/dashboard/" },
           { "/": "/stats" },
-          { "/": "/dashboard" }
+          { "/": "/stats/" },
+          { "/": "/builder" },
+          { "/": "/builder/" },
+          { "/": "/profile" },
+          { "/": "/profile/" }
         ]
       }
     ]
