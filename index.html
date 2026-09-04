@@ -258,6 +258,35 @@
             transform: scale(1.045);
             display: block;
         }
+        .device .screen video {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+            background: #000;
+        }
+
+        /* ---------- Animated demo strip ---------- */
+        .demo-strip {
+            max-width: 960px;
+            margin: 0 auto 64px;
+            border-radius: 22px;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 0 0 1px #1c1c1c, 0 34px 80px rgba(0, 0, 0, 0.55), 0 0 60px rgba(204, 255, 0, 0.05);
+        }
+        .demo-strip video { width: 100%; aspect-ratio: 16 / 9; display: block; }
+        .demo-strip .cap {
+            display: block;
+            text-align: center;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: #555;
+            font-weight: 600;
+            padding: 10px 16px 12px;
+            background: #fff;
+        }
 
         /* ---------- Equipment strip ---------- */
         .strip { padding: 14px 0 8px; }
@@ -440,7 +469,13 @@
             </div>
             <div class="device-stage reveal">
                 <div class="device">
-                    <div class="screen"><img src="assets/shot-home.webp" alt="LifeSpike home screen with AI coach suggesting the next workout" width="280" height="607" loading="eager"></div>
+                    <div class="screen">
+                        <video autoplay muted loop playsinline preload="metadata" poster="assets/preview-player-poster.webp" width="280" height="607" aria-label="LifeSpike workout player: an animated character demonstrates each exercise while the interval timer runs">
+                            <source src="assets/preview-player.mp4" type="video/mp4">
+                            <source src="assets/preview-player.webm" type="video/webm">
+                            <img src="assets/shot-home.webp" alt="LifeSpike home screen with AI coach suggesting the next workout" width="280" height="607" loading="eager">
+                        </video>
+                    </div>
                 </div>
             </div>
         </section>
@@ -464,6 +499,14 @@
                 <div class="kicker">How it works</div>
                 <h2>A complete training system in your pocket</h2>
                 <p>From a structured multi-week plan to a workout you generate in seconds — LifeSpike guides every rep and remembers every session.</p>
+            </div>
+
+            <div class="demo-strip reveal">
+                <video autoplay muted loop playsinline preload="metadata" poster="assets/hero-loop-poster.webp" aria-label="Animated demonstrations of kettlebell and bodyweight exercises from the LifeSpike library">
+                    <source src="assets/hero-loop.mp4" type="video/mp4">
+                    <source src="assets/hero-loop.webm" type="video/webm">
+                </video>
+                <span class="cap">Every exercise, animated — so you never guess the form</span>
             </div>
 
             <div class="showcase">
@@ -633,6 +676,11 @@
             document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
         } else {
             document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+        }
+    </script>
+    <script>
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            document.querySelectorAll('video[autoplay]').forEach(function (v) { v.removeAttribute('autoplay'); v.pause(); });
         }
     </script>
 </body>

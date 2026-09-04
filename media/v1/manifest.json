@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-03T13:51:50.086Z",
+  "generatedAt": "2026-09-03T19:33:32.889Z",
   "clips": {
     "male": {
       "goblet_squat": {
@@ -268,8 +268,8 @@
         "h": 960
       },
       "renegade_rows": {
-        "file": "male/renegade_rows.8e4b6050.mp4",
-        "bytes": 287166,
+        "file": "male/renegade_rows.965c8615.mp4",
+        "bytes": 248737,
         "w": 960,
         "h": 720
       },
